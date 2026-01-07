@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 class Solution 
 {
     class Node 
@@ -39,28 +39,24 @@ class Solution
     }
     void removeDuplicate()
     {
-      Node temp=head;
-
-      while(temp!=null)
+      Node curr=head;
+      Node prev=null;
+      HashSet<Integer> res=new HashSet<>();
+      while(curr!=null)
       {
-         Node curr=temp;
-         while(curr.next!=null)
+         if(res.contains(curr.data))
          {
-                         if(curr.next.data==temp.data)
-                         {
-                            curr.next=curr.next.next;
-                         }
-                         else 
-                         {
-                                                  curr=curr.next;
-                         }
-}
-         
-         temp=temp.next;
-
-
+             prev.next=curr.next;
+         }
+         else 
+         {
+                         res.add(curr.data);
+                         prev=curr;
+         }
+         curr=curr.next;
       }
 
+      
 }
 }
 
