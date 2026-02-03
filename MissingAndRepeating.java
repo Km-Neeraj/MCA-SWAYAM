@@ -1,50 +1,42 @@
 import java.util.*;
 class Solution 
 {
-     static ArrayList<Integer> missingRepeating(int[][]arr,int n)
-     {
-          ArrayList<Integer> res=new ArrayList<>();
-                         int t=n*n;
+    static void missingAndRepeating(int[]arr,int n)
+    {
+         int[]count=new int[n+1];
+         for(int i=0;i<n;i++)
+         {
+                         count[arr[i]]++;
+         }
+         int miss=-1;
+         int repeat=-1;
+         for(int i=1;i<=n;i++)
+         {
+                         if(count[i]==0)
+                          miss=i;
+                         else if(count[i]==2)
+                           repeat=i;
+         }
+         System.out.println("Repeating = "+repeat);
+         System.out.println("Missing = "+miss);
 
-          int[]freq=new int[t+1];
-          for(int i=0;i<n;i++)
-          {
-              for(int j=0;j<n;j++)
-              {
-                    freq[arr[i][j]]++;
-              }
-          }
-          int m=-1,r=-1;
-          for(int i=1;i<=t;i++)
-          {
-               if(freq[i]==2)
-               r=i;
-               if(freq[i]==0)
-               m=i;
-          }
-          res.add(m);
-          res.add(r);
-          return res;
-     }
+    }
 }
 public class MissingAndRepeating {
-                         public static void main(String[] args) {
-                         
-                           int n;
-                           Scanner sc=new Scanner(System.in);
-                           n=sc.nextInt();
-                           int[][]arr=new int[n][n];
-                           for(int i=0;i<n;i++)
-                           {
-                             for(int j=0;j<n;j++)
-                             {
-                                arr[i][j]=sc.nextInt();
-                             }
-                           }
-                           ArrayList<Integer> res=Solution.missingRepeating(arr,n);
-                           System.out.println(res);
-                           sc.close();
-                                                  
-                         }
+
+                              public static void main(String[]abc)
+                              {
+                                                  Scanner sc=new Scanner(System.in);
+                                                  int n=sc.nextInt();
+                                                  int[]arr=new int[n];
+                                                  System.out.println("Enter Array elements");
+                                                  for(int i=0;i<n;i++)
+                                                  {
+                                                      arr[i]=sc.nextInt();
+                                                  }
+                                                  Solution.missingAndRepeating(arr,n);
+                                                  sc.close();
+
+                              }
                          
 }
